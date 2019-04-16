@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import io.github.anantharajuc.springbooth2db.model.Person;
 import io.github.anantharajuc.springbooth2db.repository.PersonRepository;
@@ -38,10 +36,9 @@ public class PersonServiceImpl implements PersonService
     }
 	
 	@CacheEvict(allEntries = true)
-	public ResponseEntity<?> delete(Long id) 
+	public void delete(Long id) 
 	{
         personRepository.deleteById(id);
-        return new ResponseEntity<Object>(HttpStatus.OK);
     }
 	
 	private void simulateSlowService() 

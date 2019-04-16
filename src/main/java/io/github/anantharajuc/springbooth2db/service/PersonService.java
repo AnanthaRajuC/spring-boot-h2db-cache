@@ -2,7 +2,6 @@ package io.github.anantharajuc.springbooth2db.service;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import io.github.anantharajuc.springbooth2db.model.Person;
@@ -16,5 +15,5 @@ public interface PersonService
 	
 	void saveOrUpdate(Person person);
 	
-	ResponseEntity delete(Long id);
+	void delete(Long id);
 }
