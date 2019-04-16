@@ -15,7 +15,7 @@ import io.github.anantharajuc.springbooth2db.model.Person;
 import io.github.anantharajuc.springbooth2db.service.PersonServiceImpl;
 
 @RestController
-@RequestMapping("/Person")
+@RequestMapping("/Persons")
 public class PersonController 
 {
 	@Autowired
