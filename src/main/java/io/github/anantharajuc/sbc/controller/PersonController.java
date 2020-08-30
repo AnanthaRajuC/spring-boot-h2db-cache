@@ -1,10 +1,11 @@
-package io.github.anantharajuc.springbooth2db.controller;
+package io.github.anantharajuc.sbc.controller;
 
 import java.util.List;
-import java.util.Optional;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,12 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.github.anantharajuc.springbooth2db.model.Person;
-import io.github.anantharajuc.springbooth2db.repository.PersonRepository;
-import io.github.anantharajuc.springbooth2db.service.PersonServiceImpl;
+import io.github.anantharajuc.sbc.model.Person;
+import io.github.anantharajuc.sbc.repository.PersonRepository;
+import io.github.anantharajuc.sbc.service.PersonServiceImpl;
 
 @RestController
-@RequestMapping("/Persons")
+@RequestMapping("/api/")
 public class PersonController 
 {
 	@Autowired
@@ -35,9 +36,9 @@ public class PersonController
      * 
      * @return List<Person> with all persons
      */
-	@GetMapping(path="/all", produces = "application/json")
+	@GetMapping(path="/person", produces = "application/json")
 	@ResponseStatus(HttpStatus.OK)
-    private List<Person> getAllPersons() 
+    public List<Person> getAllPersons() 
 	{
         return personServiceImpl.getAllPersons();
     }
@@ -48,9 +49,9 @@ public class PersonController
      * @param id. The persons id         
      * @return the person
      */
-	@GetMapping(value = "/{id}", produces = "application/json")
+	@GetMapping(value = "/person/{id}", produces = "application/json")
 	@ResponseStatus(HttpStatus.OK)
-    private Person getPerson(@PathVariable("id") Long id) 
+    public Person getPerson(@PathVariable("id") Long id) 
 	{
         return personServiceImpl.getPersonById(id);
     }
@@ -62,11 +63,12 @@ public class PersonController
      * @param person. The person to create
      * @return the created person
      */
-	@PostMapping(path="/persons", consumes = "application/json")
+	@PostMapping(path="/person", consumes = "application/json")
 	@ResponseStatus(HttpStatus.CREATED)
-    private Person savePerson(@RequestBody Person person) 
+    public Person savePerson(@RequestBody Person person) 
 	{
-        personServiceImpl.saveOrUpdate(person);
+        personServiceImpl.savePerson(person);
+        
         return person; 
     }
 	
@@ -77,21 +79,11 @@ public class PersonController
      * @param person. The person values to be updated
      * @throws ResourceNotFoundException if person not found.
      */
-	@PutMapping(value = "/{id}", consumes = "application/json", produces = "application/json")
+	@PutMapping(value = "/person/{id}", consumes = "application/json", produces = "application/json")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	private void updatePerson(@PathVariable("id") Long id, @RequestBody Person person)
+	public Person updatePerson(@PathVariable("id") Long id, @Valid @RequestBody Person person)
 	{
-		Optional<Person> updateablePerson = personRepository.findById(id); 
-		
-		if(updateablePerson.isPresent())
-		{
-			
-			personRepository.save(person);
-		}
-		else 
-		{
-			throw new ResourceNotFoundException("Person not found");
-		}		
+		return personServiceImpl.updatePerson(id, person);	
 	}
 	
 	/**
@@ -102,16 +94,8 @@ public class PersonController
      */
 	@DeleteMapping("/person/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-    private void deletePerson(@PathVariable("id") Long id) 
+    public ResponseEntity<?> deletePerson(@PathVariable("id") Long id) 
 	{
-		try 
-		{
-			personServiceImpl.delete(id);
-		} 
-		catch (Exception e) 
-		{
-			//e.printStackTrace();
-			throw new ResourceNotFoundException("Person Resource not found");
-		}
+		return personServiceImpl.delete(id);
     }
 } 
