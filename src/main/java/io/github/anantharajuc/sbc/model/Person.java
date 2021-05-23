@@ -8,30 +8,33 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 @Entity
 @Table(name="person")
 @Getter
 @Setter
+@FieldDefaults(level=AccessLevel.PRIVATE)
 @AllArgsConstructor
 @NoArgsConstructor
 public class Person 
 {
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Long id;
 	
 	@Column(name="name", nullable = false)
-	private String name;
+	String name;
 	
 	@Email
 	@Column(name="email", nullable = false, unique=true)
-	private String email;
+	String email;
 	
 	@Column(name="mobile_number", nullable = true)
-	private String mobileNumber;
+	String mobileNumber;
 }
