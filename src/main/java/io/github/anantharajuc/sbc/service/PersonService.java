@@ -12,7 +12,7 @@ public interface PersonService
 	
 	Person getPersonById(Long id);
 	
-	void savePerson(Person person);
+	Person savePerson(Person person);
 	
 	ResponseEntity<?> delete(Long id);
 	

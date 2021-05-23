@@ -43,11 +43,11 @@ public class PersonServiceImpl implements PersonService
 	
 	@CacheEvict(allEntries = true) 
 	//@CacheEvict annotation is used to indicate the removal of one or more/all values so that fresh values can be loaded into the cache again.
-	public void savePerson(Person person) 
+	public Person savePerson(Person person) 
 	{
 		log.info("-----> saveOrUpdate service");
 		
-        personRepository.save(person);
+        return personRepository.save(person);
     }
 	
 	@CacheEvict(allEntries = true)

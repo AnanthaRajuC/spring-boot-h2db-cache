@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.github.anantharajuc.sbc.api.APIutil;
 import io.github.anantharajuc.sbc.model.Person;
 import io.github.anantharajuc.sbc.repository.PersonRepository;
 import io.github.anantharajuc.sbc.service.PersonServiceImpl;
@@ -30,10 +34,15 @@ public class PersonQueryController
      * @return List<Person> with all persons
      */
 	@GetMapping(path="/person", produces = "application/json")
-	@ResponseStatus(HttpStatus.OK)
-    public List<Person> getAllPersons() 
+    public ResponseEntity<List<Person>> getAllPersons(@RequestHeader(value=APIutil.HEADER_API_NAME, defaultValue="${api.name}") String apiName, 
+    												  @RequestHeader(value=APIutil.HEADER_API_VERSION, defaultValue="${api.version}") String apiVersion) 
 	{
-        return personServiceImpl.getAllPersons();
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
+
+		headers.add(APIutil.HEADER_API_NAME, apiName);
+		headers.add(APIutil.HEADER_API_VERSION, apiVersion);
+		
+		return new ResponseEntity<>(personServiceImpl.getAllPersons(), headers, HttpStatus.OK);
     }
 	
 	/**
@@ -43,9 +52,15 @@ public class PersonQueryController
      * @return the person
      */
 	@GetMapping(value = "/person/{id}", produces = "application/json")
-	@ResponseStatus(HttpStatus.OK)
-    public Person getPerson(@PathVariable("id") Long id) 
+    public ResponseEntity<Person> getPerson(@RequestHeader(value=APIutil.HEADER_API_NAME, defaultValue="${api.name}") String apiName, 
+    										@RequestHeader(value=APIutil.HEADER_API_VERSION, defaultValue="${api.version}") String apiVersion,
+    										@PathVariable("id") Long id) 
 	{
-        return personServiceImpl.getPersonById(id);
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<>(); 
+
+		headers.add(APIutil.HEADER_API_NAME, apiName);
+		headers.add(APIutil.HEADER_API_VERSION, apiVersion);
+		
+        return new ResponseEntity<>(personServiceImpl.getPersonById(id), headers, HttpStatus.OK);
     }
 }
