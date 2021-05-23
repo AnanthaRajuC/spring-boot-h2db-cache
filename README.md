@@ -6,13 +6,50 @@
 -->
 # Caching Data with Spring Boot
 
+<div align="center">
+
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen?logo=github)](CODE_OF_CONDUCT.md) [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=Checkout+this+recipe+for+springboot+caching&url=https://github.com/AnanthaRajuC/spring-boot-h2db-cache&hashtags=SpringBoot) [![Twitter Follow](https://img.shields.io/twitter/follow/anantharajuc?label=follow%20me&style=social)](https://twitter.com/anantharajuc)
+</div>
+
+<div align="center">
+  <sub>Built with ❤︎ by <a href="https://twitter.com/anantharajuc">Anantha Raju C</a> and <a href="https://github.com/AnanthaRajuC/spring-boot-h2db-cache/graphs/contributors">contributors</a>
+</div>
+
+</br>
+
+<p align="center">
+	<a href="https://github.com/AnanthaRajuC/spring-boot-h2db-cache/blob/master/README.md#readme"><strong>Explore the docs »</strong></a>
+	<br />
+	<br />
+	<a href="https://github.com/AnanthaRajuC/spring-boot-h2db-cache/issues">Report Bug</a>
+	·
+	<a href="https://github.com/AnanthaRajuC/spring-boot-h2db-cache/issues">Request Feature</a>
+</p>
+
+<!-- PROJECT SHIELDS -->
+<!--
+*** I'm using markdown "reference style" links for readability.
+*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
+-->
+
+|     Service     | Badge | Badge | Badge | Badge | Badge |
+|-----------------|-------|-------|-------|-------|-------|
+|  **GitHub**     |[![GitHub last commit](https://img.shields.io/github/last-commit/AnanthaRajuC/spring-boot-h2db-cache)](https://github.com/AnanthaRajuC/spring-boot-h2db-cache/commits/master)|[![GitHub pull requests](https://img.shields.io/github/issues-pr-raw/AnanthaRajuC/spring-boot-h2db-cache)](https://github.com/AnanthaRajuC/spring-boot-h2db-cache/pulls)|[![GitHub issues](https://img.shields.io/github/issues/AnanthaRajuC/spring-boot-h2db-cache)](https://github.com/AnanthaRajuC/spring-boot-h2db-cache/issues)|[![GitHub forks](https://img.shields.io/github/forks/AnanthaRajuC/spring-boot-h2db-cache)](https://github.com/AnanthaRajuC/spring-boot-h2db-cache/network)|[![GitHub stars](https://img.shields.io/github/stars/AnanthaRajuC/spring-boot-h2db-cache)](https://github.com/AnanthaRajuC/spring-boot-h2db-cache/stargazers)|
+|  **GitHub**     |![GitHub repo size](https://img.shields.io/github/repo-size/AnanthaRajuC/spring-boot-h2db-cache)|![GitHub top language](https://img.shields.io/github/languages/top/AnanthaRajuC/spring-boot-h2db-cache.svg)|![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/AnanthaRajuC/spring-boot-h2db-cache)|![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/AnanthaRajuC/spring-boot-h2db-cache.svg)|![GitHub language count](https://img.shields.io/github/languages/count/AnanthaRajuC/spring-boot-h2db-cache)|
+|    **lgtm**     |[![lgtm-languages](https://badgen.net/lgtm/langs/g/AnanthaRajuC/spring-boot-h2db-cache)](https://lgtm.com/projects/g/AnanthaRajuC/spring-boot-h2db-cache?mode=list)|[![lgtm-alerts](https://badgen.net/lgtm/alerts/g/AnanthaRajuC/spring-boot-h2db-cache)](https://lgtm.com/projects/g/AnanthaRajuC/spring-boot-h2db-cache?mode=list)|[![lgtm-lines](https://badgen.net/lgtm/lines/g/AnanthaRajuC/spring-boot-h2db-cache)](https://lgtm.com/projects/g/AnanthaRajuC/spring-boot-h2db-cache?mode=list)|[![lgtm-lines-java](https://badgen.net/lgtm/lines/g/AnanthaRajuC/spring-boot-h2db-cache/java)](https://lgtm.com/projects/g/AnanthaRajuC/spring-boot-h2db-cache?mode=list)|[![lgtm-grade](https://badgen.net/lgtm/grade/g/AnanthaRajuC/spring-boot-h2db-cache)](https://lgtm.com/projects/g/AnanthaRajuC/spring-boot-h2db-cache?mode=list)|
+
+
 - https://docs.spring.io/spring-boot/docs/2.1.6.RELEASE/reference/html/boot-features-caching.html
 - http://localhost:8080/h2-console
 
+## Details
+
+- [Installation](documents/INSTALLATION.MD)  
+
 ## Annotations
 
-|Annotation      | Description                                                                                  |
-|----------------|----------------------------------------------------------------------------------------------|
+|Annotation          | Description                                                                                  |
+|--------------------|----------------------------------------------------------------------------------------------|
 |**`@EnableCaching`**|Enables Spring Caching functionality.                                                         |
 |**`@Cacheable`**    |First check the cached method before actually invoking the method and then caching the result.|
 |**`@CacheEvict`**   |Remove one or more/all values so that fresh values can be loaded into the cache again.        |

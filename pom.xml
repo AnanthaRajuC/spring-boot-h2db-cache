@@ -12,7 +12,7 @@
 	
 	<groupId>io.github.anantharajuc</groupId>
 	<artifactId>spring-boot-h2db</artifactId>
-	<version>0.0.1</version>
+	<version>latest</version>
 	
 	<name>spring-boot-h2db</name>
 	<url>https://github.com/AnanthaRajuC/spring-boot-h2db-cache</url>
