@@ -1,4 +1,4 @@
-package io.github.anantharajuc.springbooth2db;
+/*package io.github.anantharajuc.springbooth2db;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,4 +13,4 @@ public class SpringBootH2dbApplicationTests {
 	public void contextLoads() {
 	}
 
-}
+}*/
