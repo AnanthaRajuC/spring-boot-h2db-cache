@@ -46,7 +46,7 @@
 	<properties>
 		<!--  Dependencies versions properties  -->
 		<java.version>1.8</java.version>
-		<springdoc-openapi-ui.version>1.2.32</springdoc-openapi-ui.version>
+		<springdoc-openapi-ui.version>1.5.9</springdoc-openapi-ui.version>
 		<swagger-annotations.version>1.6.1</swagger-annotations.version>
 		<modelmapper.version>2.4.3</modelmapper.version>
 	</properties>
